@@ -112,48 +112,48 @@
                 </tr>
                 <tr>
                     <td>Monday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
                 </tr>
                 <tr>
                     <td>Tuesday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
                 </tr>
                 <tr>
                     <td>Wednesday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
                 </tr>
                 <tr>
                     <td>Thursday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
                 </tr>
                 <tr>
                     <td>Friday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
                 </tr>
             </table>
         </div>
@@ -161,7 +161,6 @@
         <div class="nav-buttons">
             <button class="color-button" onclick="toggleColor('dispatched')">Dispatched</button>
             <button class="color-button" onclick="toggleColor('off')">Off</button>
-            <button class="color-button" onclick="splitCell()">Split Cell</button>
         </div>
     </div>
 
@@ -220,17 +219,6 @@
                         selectedCell.style.backgroundColor = "gray";
                     }
                 }
-                saveData();
-            }
-        }
-
-        function splitCell() {
-            if (selectedCell) {
-                selectedCell.classList.add("split-cell");
-                selectedCell.innerHTML = `
-                    <div contenteditable="true" class="editable"></div>
-                    <div contenteditable="true" class="editable"></div>
-                `;
                 saveData();
             }
         }

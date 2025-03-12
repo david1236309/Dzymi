@@ -148,8 +148,8 @@
         </div>
         
         <div class="nav-buttons">
-            <button class="color-button" onclick="markDispatched()">Dispatched</button>
-            <button class="color-button" onclick="markOff()">Off</button>
+            <button class="color-button" onclick="toggleColor('dispatched')">Dispatched</button>
+            <button class="color-button" onclick="toggleColor('off')">Off</button>
         </div>
     </div>
 
@@ -173,12 +173,29 @@
                 }
                 data.push(row);
             }
+
+            // Save headers
+            let headers = [];
+            document.querySelectorAll("th[contenteditable='true']").forEach((header, index) => {
+                headers.push(header.innerText);
+            });
+            localStorage.setItem("scheduleHeaders", JSON.stringify(headers));
+
             localStorage.setItem("scheduleData", JSON.stringify(data));
         }
 
         function loadData() {
             let table = document.getElementById("scheduleTable");
             let data = JSON.parse(localStorage.getItem("scheduleData"));
+            let headers = JSON.parse(localStorage.getItem("scheduleHeaders"));
+
+            if (headers) {
+                let headerCells = document.querySelectorAll("th[contenteditable='true']");
+                headerCells.forEach((header, index) => {
+                    header.innerText = headers[index];
+                });
+            }
+
             if (data) {
                 for (let i = 1; i < table.rows.length; i++) {
                     for (let j = 0; j < table.rows[i].cells.length; j++) {
@@ -189,17 +206,22 @@
             }
         }
 
-        function markDispatched() {
+        function toggleColor(type) {
             if (selectedCell) {
-                selectedCell.style.backgroundColor = "green"; // Apply green background for dispatched
-                saveData(); // Save after marking
-            }
-        }
-
-        function markOff() {
-            if (selectedCell) {
-                selectedCell.style.backgroundColor = "gray"; // Apply gray background for off
-                saveData(); // Save after marking
+                if (type === 'dispatched') {
+                    if (selectedCell.style.backgroundColor === "green") {
+                        selectedCell.style.backgroundColor = ""; // Clear the color if already dispatched
+                    } else {
+                        selectedCell.style.backgroundColor = "green"; // Set to dispatched color
+                    }
+                } else if (type === 'off') {
+                    if (selectedCell.style.backgroundColor === "gray") {
+                        selectedCell.style.backgroundColor = ""; // Clear the color if already off
+                    } else {
+                        selectedCell.style.backgroundColor = "gray"; // Set to off color
+                    }
+                }
+                saveData(); // Save after changing color
             }
         }
 

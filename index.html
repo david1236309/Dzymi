@@ -100,48 +100,48 @@
                 </tr>
                 <tr>
                     <td>Monday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
                 </tr>
                 <tr>
                     <td>Tuesday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
                 </tr>
                 <tr>
                     <td>Wednesday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
                 </tr>
                 <tr>
                     <td>Thursday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
                 </tr>
                 <tr>
                     <td>Friday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
+                    <td contenteditable="true" class="editable"></td>
                 </tr>
             </table>
         </div>
@@ -182,7 +182,7 @@
                 for (let i = 1; i < table.rows.length; i++) {
                     for (let j = 1; j < table.rows[i].cells.length; j++) {
                         table.rows[i].cells[j].innerText = data[i - 1][j - 1].text || "";
-                        table.rows[i].cells[j].className = data[i - 1][j - 1].class || "";
+                        table.rows[i].cells[j].className = data[i - 1][j - 1].class || "editable";
                     }
                 }
             }

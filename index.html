@@ -191,12 +191,14 @@
         function markDispatched() {
             if (selectedCell) {
                 selectedCell.classList.toggle("selected");
+                saveData();  // Save data after changing the class
             }
         }
 
         function markOff() {
             if (selectedCell) {
                 selectedCell.classList.toggle("off");
+                saveData();  // Save data after changing the class
             }
         }
 

@@ -72,12 +72,15 @@
         /* Style for cells that are divided into two parts */
         .split-cell {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
         }
-        .split-cell > div {
-            flex: 1;
-            border-bottom: 1px solid #000;
+        .split-cell div {
+            width: 50%;
             padding: 5px;
+            border-right: 1px solid #000;
+        }
+        .split-cell div:last-child {
+            border-right: none;
         }
     </style>
 </head>
@@ -112,48 +115,48 @@
                 </tr>
                 <tr>
                     <td>Monday</td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
                 </tr>
                 <tr>
                     <td>Tuesday</td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
                 </tr>
                 <tr>
                     <td>Wednesday</td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
                 </tr>
                 <tr>
                     <td>Thursday</td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
                 </tr>
                 <tr>
                     <td>Friday</td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
-                    <td contenteditable="true" class="editable split-cell"><div></div><div></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
+                    <td class="split-cell"><div contenteditable="true"></div><div contenteditable="true"></div></td>
                 </tr>
             </table>
         </div>
@@ -177,28 +180,32 @@
             for (let i = 1; i < table.rows.length; i++) {
                 let row = [];
                 for (let j = 0; j < table.rows[i].cells.length; j++) {
+                    let cell = table.rows[i].cells[j];
                     row.push({
-                        text: table.rows[i].cells[j].innerText,
-                        color: table.rows[i].cells[j].style.backgroundColor,
-                        class: table.rows[i].cells[j].className
+                        textTop: cell.querySelector('div:first-child').innerText,
+                        textBottom: cell.querySelector('div:last-child').innerText,
+                        colorTop: cell.querySelector('div:first-child').style.backgroundColor,
+                        colorBottom: cell.querySelector('div:last-child').style.backgroundColor
                     });
                 }
                 data.push(row);
             }
-
             localStorage.setItem("scheduleData", JSON.stringify(data));
         }
 
         function loadData() {
             let table = document.getElementById("scheduleTable");
             let data = JSON.parse(localStorage.getItem("scheduleData"));
-
             if (data) {
                 for (let i = 1; i < table.rows.length; i++) {
                     for (let j = 0; j < table.rows[i].cells.length; j++) {
-                        table.rows[i].cells[j].innerText = data[i - 1][j].text || "";
-                        table.rows[i].cells[j].style.backgroundColor = data[i - 1][j].color || "";
-                        table.rows[i].cells[j].className = data[i - 1][j].class || "editable";
+                        let cell = table.rows[i].cells[j];
+                        let topDiv = cell.querySelector('div:first-child');
+                        let bottomDiv = cell.querySelector('div:last-child');
+                        topDiv.innerText = data[i - 1][j].textTop || '';
+                        bottomDiv.innerText = data[i - 1][j].textBottom || '';
+                        topDiv.style.backgroundColor = data[i - 1][j].colorTop || '';
+                        bottomDiv.style.backgroundColor = data[i - 1][j].colorBottom || '';
                     }
                 }
             }
@@ -206,17 +213,29 @@
 
         function toggleColor(type) {
             if (selectedCell) {
+                let topDiv = selectedCell.querySelector('div:first-child');
+                let bottomDiv = selectedCell.querySelector('div:last-child');
                 if (type === 'dispatched') {
-                    if (selectedCell.style.backgroundColor === "green") {
-                        selectedCell.style.backgroundColor = "";
+                    if (topDiv.style.backgroundColor === "green") {
+                        topDiv.style.backgroundColor = "";
                     } else {
-                        selectedCell.style.backgroundColor = "green";
+                        topDiv.style.backgroundColor = "green";
+                    }
+                    if (bottomDiv.style.backgroundColor === "green") {
+                        bottomDiv.style.backgroundColor = "";
+                    } else {
+                        bottomDiv.style.backgroundColor = "green";
                     }
                 } else if (type === 'off') {
-                    if (selectedCell.style.backgroundColor === "gray") {
-                        selectedCell.style.backgroundColor = "";
+                    if (topDiv.style.backgroundColor === "gray") {
+                        topDiv.style.backgroundColor = "";
                     } else {
-                        selectedCell.style.backgroundColor = "gray";
+                        topDiv.style.backgroundColor = "gray";
+                    }
+                    if (bottomDiv.style.backgroundColor === "gray") {
+                        bottomDiv.style.backgroundColor = "";
+                    } else {
+                        bottomDiv.style.backgroundColor = "gray";
                     }
                 }
                 saveData();
@@ -224,7 +243,7 @@
         }
 
         let selectedCell = null;
-        document.querySelectorAll("td[contenteditable=true]").forEach(cell => {
+        document.querySelectorAll("td").forEach(cell => {
             cell.addEventListener("click", () => {
                 selectedCell = cell;
             });

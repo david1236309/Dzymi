@@ -26,10 +26,53 @@
         p {
             font-size: 18px;
         }
+        .nav-buttons {
+            margin-bottom: 20px;
+        }
+        .nav-buttons button {
+            background-color: #4DA8DA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .nav-buttons button:hover {
+            background-color: #357ABD;
+        }
+        .calendar {
+            width: 100%;
+            margin-top: 20px;
+        }
+        .calendar table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #FFF;
+            color: black;
+        }
+        .calendar th, .calendar td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+            width: 50%;
+        }
     </style>
+    <script>
+        function showPage(page) {
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('table').style.display = 'none';
+            document.getElementById(page).style.display = 'block';
+        }
+    </script>
 </head>
 <body>
-    <div class="container">
+    <div class="nav-buttons">
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('table')">Table</button>
+    </div>
+    
+    <div id="home" class="container">
         <h1>DZYMI INC</h1>
         <p><em>"Logistics is the lifeblood of global commerce."</em></p>
         <p><strong>Company Name:</strong> DZYMI INC</p>
@@ -37,6 +80,29 @@
         <p><strong>Address:</strong> 238 Sycamore Cir, Feasterville Trvose, PA 19053</p>
         <p><strong>Contact Number:</strong> 267-668-3612</p>
         <p><strong>Email:</strong> david1236309@gmail.com</p>
+    </div>
+    
+    <div id="table" class="container" style="display: none;">
+        <h1>Load Calendar</h1>
+        <div class="calendar">
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Load 1</th>
+                    <th>Load 2</th>
+                </tr>
+                <tr>
+                    <td>March 12, 2025</td>
+                    <td contenteditable="true">Enter details</td>
+                    <td contenteditable="true">Enter details</td>
+                </tr>
+                <tr>
+                    <td>March 13, 2025</td>
+                    <td contenteditable="true">Enter details</td>
+                    <td contenteditable="true">Enter details</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </body>
 </html>

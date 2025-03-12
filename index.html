@@ -145,6 +145,12 @@
         </div>
     </div>
     <script>
+        function showPage(pageId) {
+            document.getElementById("home").style.display = "none";
+            document.getElementById("table").style.display = "none";
+            document.getElementById(pageId).style.display = "block";
+        }
+
         let selectedCell = null;
         function selectCell(cell) {
             selectedCell = cell;

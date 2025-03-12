@@ -84,7 +84,7 @@
     <div id="table" class="container" style="display: none;">
         <h1>Weekly Schedule</h1>
         <div class="calendar">
-            <table>
+            <table id="scheduleTable">
                 <tr>
                     <th>Day</th>
                     <th>Driver 1</th>
@@ -96,51 +96,50 @@
                 </tr>
                 <tr>
                     <td>Monday</td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
                 </tr>
                 <tr>
                     <td>Tuesday</td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
                 </tr>
                 <tr>
                     <td>Wednesday</td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
                 </tr>
                 <tr>
                     <td>Thursday</td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
                 </tr>
                 <tr>
                     <td>Friday</td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
-                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
                 </tr>
             </table>
-            <button class="color-button" onclick="toggleColor()">Toggle Green</button>
         </div>
     </div>
     <script>
@@ -150,15 +149,37 @@
             document.getElementById(pageId).style.display = "block";
         }
 
-        let selectedCell = null;
-        function selectCell(cell) {
-            selectedCell = cell;
+        function saveData() {
+            let table = document.getElementById("scheduleTable");
+            let data = [];
+            for (let i = 1; i < table.rows.length; i++) {
+                let row = [];
+                for (let j = 1; j < table.rows[i].cells.length; j++) {
+                    row.push(table.rows[i].cells[j].innerText);
+                }
+                data.push(row);
+            }
+            localStorage.setItem("scheduleData", JSON.stringify(data));
         }
-        function toggleColor() {
-            if (selectedCell) {
-                selectedCell.classList.toggle('selected');
+
+        function loadData() {
+            let table = document.getElementById("scheduleTable");
+            let data = JSON.parse(localStorage.getItem("scheduleData"));
+            if (data) {
+                for (let i = 1; i < table.rows.length; i++) {
+                    for (let j = 1; j < table.rows[i].cells.length; j++) {
+                        table.rows[i].cells[j].innerText = data[i - 1][j - 1] || "";
+                    }
+                }
             }
         }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadData();
+            document.querySelectorAll("td[contenteditable=true]").forEach(cell => {
+                cell.addEventListener("input", saveData);
+            });
+        });
     </script>
 </body>
 </html>

@@ -91,13 +91,13 @@
         <div class="calendar">
             <table id="scheduleTable">
                 <tr>
-                    <th>Day</th>
-                    <th>Driver 1</th>
-                    <th>Driver 2</th>
-                    <th>Driver 3</th>
-                    <th>Driver 4</th>
-                    <th>Driver 5</th>
-                    <th>Driver 6</th>
+                    <th contenteditable="true" class="editable-header">Day</th>
+                    <th contenteditable="true" class="editable-header">Driver 1</th>
+                    <th contenteditable="true" class="editable-header">Driver 2</th>
+                    <th contenteditable="true" class="editable-header">Driver 3</th>
+                    <th contenteditable="true" class="editable-header">Driver 4</th>
+                    <th contenteditable="true" class="editable-header">Driver 5</th>
+                    <th contenteditable="true" class="editable-header">Driver 6</th>
                 </tr>
                 <tr>
                     <td>Monday</td>
@@ -165,7 +165,7 @@
             let data = [];
             for (let i = 1; i < table.rows.length; i++) {
                 let row = [];
-                for (let j = 1; j < table.rows[i].cells.length; j++) {
+                for (let j = 0; j < table.rows[i].cells.length; j++) {
                     row.push({
                         text: table.rows[i].cells[j].innerText,
                         color: table.rows[i].cells[j].style.backgroundColor // Save the background color of the cell
@@ -181,9 +181,9 @@
             let data = JSON.parse(localStorage.getItem("scheduleData"));
             if (data) {
                 for (let i = 1; i < table.rows.length; i++) {
-                    for (let j = 1; j < table.rows[i].cells.length; j++) {
-                        table.rows[i].cells[j].innerText = data[i - 1][j - 1].text || "";
-                        table.rows[i].cells[j].style.backgroundColor = data[i - 1][j - 1].color || ""; // Load the saved background color
+                    for (let j = 0; j < table.rows[i].cells.length; j++) {
+                        table.rows[i].cells[j].innerText = data[i - 1][j].text || "";
+                        table.rows[i].cells[j].style.backgroundColor = data[i - 1][j].color || ""; // Load the saved background color
                     }
                 }
             }
@@ -209,6 +209,10 @@
                 selectedCell = cell;
             });
             cell.addEventListener("input", saveData);
+        });
+
+        document.querySelectorAll("th[contenteditable=true]").forEach(header => {
+            header.addEventListener("input", saveData);
         });
 
         document.addEventListener("DOMContentLoaded", loadData);

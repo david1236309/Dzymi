@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,21 +27,6 @@
         p {
             font-size: 18px;
         }
-        .nav-buttons {
-            margin-bottom: 20px;
-        }
-        .nav-buttons button, .color-button {
-            background-color: #4DA8DA;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .nav-buttons button:hover, .color-button:hover {
-            background-color: #357ABD;
-        }
         .calendar {
             overflow-x: auto;
             margin-top: 20px;
@@ -64,6 +48,25 @@
             background-color: green !important;
             color: white;
         }
+        .off {
+            background-color: gray !important;
+            color: white;
+        }
+        .nav-buttons {
+            margin-top: 20px;
+        }
+        .nav-buttons button, .color-button {
+            background-color: #4DA8DA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .nav-buttons button:hover, .color-button:hover {
+            background-color: #357ABD;
+        }
     </style>
 </head>
 <body>
@@ -84,7 +87,6 @@
     
     <div id="table" class="container" style="display: none;">
         <h1>Weekly Schedule</h1>
-        <button class="color-button" onclick="markDispatched()">Dispatched</button>
         <div class="calendar">
             <table id="scheduleTable">
                 <tr>
@@ -143,7 +145,13 @@
                 </tr>
             </table>
         </div>
+        
+        <div class="nav-buttons">
+            <button class="color-button" onclick="markDispatched()">Dispatched</button>
+            <button class="color-button" onclick="markOff()">Off</button>
+        </div>
     </div>
+
     <script>
         function showPage(pageId) {
             document.getElementById("home").style.display = "none";
@@ -157,7 +165,10 @@
             for (let i = 1; i < table.rows.length; i++) {
                 let row = [];
                 for (let j = 1; j < table.rows[i].cells.length; j++) {
-                    row.push(table.rows[i].cells[j].innerText);
+                    row.push({
+                        text: table.rows[i].cells[j].innerText,
+                        class: table.rows[i].cells[j].className
+                    });
                 }
                 data.push(row);
             }
@@ -170,7 +181,8 @@
             if (data) {
                 for (let i = 1; i < table.rows.length; i++) {
                     for (let j = 1; j < table.rows[i].cells.length; j++) {
-                        table.rows[i].cells[j].innerText = data[i - 1][j - 1] || "";
+                        table.rows[i].cells[j].innerText = data[i - 1][j - 1].text || "";
+                        table.rows[i].cells[j].className = data[i - 1][j - 1].class || "";
                     }
                 }
             }
@@ -179,6 +191,12 @@
         function markDispatched() {
             if (selectedCell) {
                 selectedCell.classList.toggle("selected");
+            }
+        }
+
+        function markOff() {
+            if (selectedCell) {
+                selectedCell.classList.toggle("off");
             }
         }
 

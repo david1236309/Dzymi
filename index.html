@@ -55,7 +55,15 @@
             border: 1px solid #000;
             padding: 10px;
             text-align: center;
-            width: 50%;
+        }
+        .save-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4DA8DA;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
         }
     </style>
     <script>
@@ -64,6 +72,39 @@
             document.getElementById('table').style.display = 'none';
             document.getElementById(page).style.display = 'block';
         }
+        
+        function saveData() {
+            let tableData = {};
+            let rows = document.querySelectorAll(".calendar table tr");
+            for (let i = 1; i < rows.length; i++) {
+                let cells = rows[i].querySelectorAll("td");
+                let rowData = [];
+                for (let j = 1; j < cells.length; j++) {
+                    rowData.push(cells[j].innerText);
+                }
+                tableData[cells[0].innerText] = rowData;
+            }
+            localStorage.setItem("scheduleData", JSON.stringify(tableData));
+        }
+        
+        function loadData() {
+            let storedData = localStorage.getItem("scheduleData");
+            if (storedData) {
+                let tableData = JSON.parse(storedData);
+                let rows = document.querySelectorAll(".calendar table tr");
+                for (let i = 1; i < rows.length; i++) {
+                    let cells = rows[i].querySelectorAll("td");
+                    if (tableData[cells[0].innerText]) {
+                        let rowData = tableData[cells[0].innerText];
+                        for (let j = 1; j < cells.length; j++) {
+                            cells[j].innerText = rowData[j - 1];
+                        }
+                    }
+                }
+            }
+        }
+        
+        window.onload = loadData;
     </script>
 </head>
 <body>
@@ -83,25 +124,65 @@
     </div>
     
     <div id="table" class="container" style="display: none;">
-        <h1>Load Calendar</h1>
+        <h1>Weekly Schedule</h1>
         <div class="calendar">
             <table>
                 <tr>
-                    <th>Date</th>
-                    <th>Load 1</th>
-                    <th>Load 2</th>
+                    <th>Day</th>
+                    <th>Driver 1</th>
+                    <th>Driver 2</th>
+                    <th>Driver 3</th>
+                    <th>Driver 4</th>
+                    <th>Driver 5</th>
+                    <th>Driver 6</th>
                 </tr>
                 <tr>
-                    <td>March 12, 2025</td>
-                    <td contenteditable="true">Enter details</td>
-                    <td contenteditable="true">Enter details</td>
+                    <td>Monday</td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
                 </tr>
                 <tr>
-                    <td>March 13, 2025</td>
-                    <td contenteditable="true">Enter details</td>
-                    <td contenteditable="true">Enter details</td>
+                    <td>Tuesday</td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
                 </tr>
             </table>
+            <button class="save-button" onclick="saveData()">Save</button>
         </div>
     </div>
 </body>

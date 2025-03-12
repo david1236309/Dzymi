@@ -54,6 +54,7 @@
         }
         .nav-buttons {
             margin-top: 20px;
+            text-align: left;
         }
         .nav-buttons button, .color-button {
             background-color: #4DA8DA;
@@ -66,6 +67,9 @@
         }
         .nav-buttons button:hover, .color-button:hover {
             background-color: #357ABD;
+        }
+        .week-container {
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -87,69 +91,14 @@
     
     <div id="table" class="container" style="display: none;">
         <h1>Weekly Schedule</h1>
-        <div class="calendar">
-            <table id="scheduleTable">
-                <tr>
-                    <th>Day</th>
-                    <th>Driver 1</th>
-                    <th>Driver 2</th>
-                    <th>Driver 3</th>
-                    <th>Driver 4</th>
-                    <th>Driver 5</th>
-                    <th>Driver 6</th>
-                </tr>
-                <tr>
-                    <td>Monday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                </tr>
-                <tr>
-                    <td>Wednesday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                </tr>
-                <tr>
-                    <td>Thursday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                </tr>
-                <tr>
-                    <td>Friday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                </tr>
-            </table>
-        </div>
-        
+
         <div class="nav-buttons">
             <button class="color-button" onclick="markDispatched()">Dispatched</button>
             <button class="color-button" onclick="markOff()">Off</button>
+            <button class="color-button" onclick="newWeek()">New Week</button>
         </div>
+
+        <div id="weeksContainer"></div>
     </div>
 
     <script>
@@ -159,58 +108,151 @@
             document.getElementById(pageId).style.display = "block";
         }
 
+        // Функція для створення нового тижня
+        function newWeek() {
+            let weeksContainer = document.getElementById("weeksContainer");
+
+            // Створення нової таблиці для нового тижня
+            let weekDiv = document.createElement("div");
+            weekDiv.className = "week-container";
+            
+            let currentDate = new Date();
+            let startOfWeek = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay()));
+            let endOfWeek = new Date(startOfWeek);
+            endOfWeek.setDate(startOfWeek.getDate() + 6);
+
+            let weekTitle = document.createElement("h2");
+            weekTitle.innerText = `Week of ${startOfWeek.toLocaleDateString()} - ${endOfWeek.toLocaleDateString()}`;
+            weekDiv.appendChild(weekTitle);
+
+            let table = createTable();
+            weekDiv.appendChild(table);
+            weeksContainer.insertBefore(weekDiv, weeksContainer.firstChild); // Додаємо тиждень на верх
+
+            saveData();
+        }
+
+        // Функція для створення таблиці
+        function createTable() {
+            let table = document.createElement("table");
+            let headerRow = document.createElement("tr");
+            headerRow.innerHTML = `
+                <th>Day</th>
+                <th>Driver 1</th>
+                <th>Driver 2</th>
+                <th>Driver 3</th>
+                <th>Driver 4</th>
+                <th>Driver 5</th>
+                <th>Driver 6</th>
+            `;
+            table.appendChild(headerRow);
+
+            const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+            days.forEach(day => {
+                let row = document.createElement("tr");
+                row.innerHTML = `<td>${day}</td>
+                                 <td contenteditable="true" class="editable"></td>
+                                 <td contenteditable="true" class="editable"></td>
+                                 <td contenteditable="true" class="editable"></td>
+                                 <td contenteditable="true" class="editable"></td>
+                                 <td contenteditable="true" class="editable"></td>
+                                 <td contenteditable="true" class="editable"></td>`;
+                table.appendChild(row);
+            });
+
+            return table;
+        }
+
         function saveData() {
-            let table = document.getElementById("scheduleTable");
-            let data = [];
-            for (let i = 1; i < table.rows.length; i++) {
-                let row = [];
-                for (let j = 1; j < table.rows[i].cells.length; j++) {
-                    row.push({
-                        text: table.rows[i].cells[j].innerText,
-                        class: table.rows[i].cells[j].className
-                    });
+            let weeksContainer = document.getElementById("weeksContainer");
+            let weeksData = [];
+            let weeks = weeksContainer.querySelectorAll(".week-container");
+
+            weeks.forEach(week => {
+                let weekData = [];
+                let table = week.querySelector("table");
+                for (let i = 1; i < table.rows.length; i++) {
+                    let row = [];
+                    for (let j = 1; j < table.rows[i].cells.length; j++) {
+                        row.push({
+                            text: table.rows[i].cells[j].innerText,
+                            class: table.rows[i].cells[j].className
+                        });
+                    }
+                    weekData.push(row);
                 }
-                data.push(row);
-            }
-            localStorage.setItem("scheduleData", JSON.stringify(data));
+                weeksData.push(weekData);
+            });
+
+            localStorage.setItem("scheduleData", JSON.stringify(weeksData));
         }
 
         function loadData() {
-            let table = document.getElementById("scheduleTable");
+            let weeksContainer = document.getElementById("weeksContainer");
             let data = JSON.parse(localStorage.getItem("scheduleData"));
             if (data) {
-                for (let i = 1; i < table.rows.length; i++) {
-                    for (let j = 1; j < table.rows[i].cells.length; j++) {
-                        table.rows[i].cells[j].innerText = data[i - 1][j - 1].text || "";
-                        table.rows[i].cells[j].className = data[i - 1][j - 1].class || "editable";
-                    }
-                }
+                data.forEach(weekData => {
+                    let weekDiv = document.createElement("div");
+                    weekDiv.className = "week-container";
+                    
+                    let weekTitle = document.createElement("h2");
+                    weekTitle.innerText = `Week of ${new Date().toLocaleDateString()}`;
+                    weekDiv.appendChild(weekTitle);
+
+                    let table = document.createElement("table");
+                    let headerRow = document.createElement("tr");
+                    headerRow.innerHTML = `
+                        <th>Day</th>
+                        <th>Driver 1</th>
+                        <th>Driver 2</th>
+                        <th>Driver 3</th>
+                        <th>Driver 4</th>
+                        <th>Driver 5</th>
+                        <th>Driver 6</th>
+                    `;
+                    table.appendChild(headerRow);
+
+                    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+                    days.forEach((day, i) => {
+                        let row = document.createElement("tr");
+                        row.innerHTML = `<td>${day}</td>
+                                         <td contenteditable="true" class="${weekData[i][0].class}">${weekData[i][0].text}</td>
+                                         <td contenteditable="true" class="${weekData[i][1].class}">${weekData[i][1].text}</td>
+                                         <td contenteditable="true" class="${weekData[i][2].class}">${weekData[i][2].text}</td>
+                                         <td contenteditable="true" class="${weekData[i][3].class}">${weekData[i][3].text}</td>
+                                         <td contenteditable="true" class="${weekData[i][4].class}">${weekData[i][4].text}</td>
+                                         <td contenteditable="true" class="${weekData[i][5].class}">${weekData[i][5].text}</td>`;
+                        table.appendChild(row);
+                    });
+
+                    weekDiv.appendChild(table);
+                    weeksContainer.appendChild(weekDiv);
+                });
             }
         }
 
         function markDispatched() {
             if (selectedCell) {
                 selectedCell.classList.toggle("selected");
-                saveData();  // Save data after changing the class
+                saveData();
             }
         }
 
         function markOff() {
             if (selectedCell) {
                 selectedCell.classList.toggle("off");
-                saveData();  // Save data after changing the class
+                saveData();
             }
         }
 
         let selectedCell = null;
-        document.querySelectorAll("td[contenteditable=true]").forEach(cell => {
-            cell.addEventListener("click", () => {
-                selectedCell = cell;
-            });
-            cell.addEventListener("input", saveData);
-        });
-
         document.addEventListener("DOMContentLoaded", loadData);
+
+        document.addEventListener("click", function (e) {
+            if (e.target.tagName.toLowerCase() === "td" && e.target.contentEditable === "true") {
+                selectedCell = e.target;
+            }
+        });
     </script>
 </body>
 </html>

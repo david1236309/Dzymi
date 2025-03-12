@@ -83,6 +83,7 @@
     
     <div id="table" class="container" style="display: none;">
         <h1>Weekly Schedule</h1>
+        <button class="color-button" onclick="markDispatched()">Dispatched</button>
         <div class="calendar">
             <table id="scheduleTable">
                 <tr>
@@ -174,12 +175,21 @@
             }
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            loadData();
-            document.querySelectorAll("td[contenteditable=true]").forEach(cell => {
-                cell.addEventListener("input", saveData);
+        function markDispatched() {
+            if (selectedCell) {
+                selectedCell.classList.toggle("selected");
+            }
+        }
+
+        let selectedCell = null;
+        document.querySelectorAll("td[contenteditable=true]").forEach(cell => {
+            cell.addEventListener("click", () => {
+                selectedCell = cell;
             });
+            cell.addEventListener("input", saveData);
         });
+
+        document.addEventListener("DOMContentLoaded", loadData);
     </script>
 </body>
 </html>

@@ -10,10 +10,11 @@
             background-color: #1B2A49;
             color: #FFFFFF;
             text-align: center;
-            padding: 50px;
+            padding: 20px;
+            margin: 0;
         }
         .container {
-            max-width: 800px;
+            max-width: 90%;
             margin: auto;
             background-color: #1B2A49;
             padding: 20px;
@@ -29,7 +30,7 @@
         .nav-buttons {
             margin-bottom: 20px;
         }
-        .nav-buttons button {
+        .nav-buttons button, .save-button, .color-button {
             background-color: #4DA8DA;
             color: white;
             border: none;
@@ -38,73 +39,31 @@
             cursor: pointer;
             border-radius: 5px;
         }
-        .nav-buttons button:hover {
+        .nav-buttons button:hover, .save-button:hover, .color-button:hover {
             background-color: #357ABD;
+        }
+        .calendar {
+            overflow-x: auto;
+            margin-top: 20px;
         }
         .calendar table {
             width: 100%;
             border-collapse: collapse;
             background-color: #FFF;
             color: black;
+            table-layout: fixed;
         }
         .calendar th, .calendar td {
             border: 1px solid #000;
             padding: 10px;
             text-align: center;
+            word-wrap: break-word;
         }
-        .calendar td {
-            min-width: 100px;
-        }
-        .save-button {
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #4DA8DA;
+        .selected {
+            background-color: green !important;
             color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
         }
     </style>
-    <script>
-        function showPage(page) {
-            document.getElementById('home').style.display = 'none';
-            document.getElementById('table').style.display = 'none';
-            document.getElementById(page).style.display = 'block';
-        }
-        
-        function saveData() {
-            let tableData = {};
-            let rows = document.querySelectorAll(".calendar table tr");
-            for (let i = 1; i < rows.length; i++) {
-                let cells = rows[i].querySelectorAll("td");
-                let rowData = [];
-                for (let j = 1; j < cells.length; j++) {
-                    rowData.push(cells[j].innerText);
-                }
-                tableData[cells[0].innerText] = rowData;
-            }
-            localStorage.setItem("scheduleData", JSON.stringify(tableData));
-        }
-        
-        function loadData() {
-            let storedData = localStorage.getItem("scheduleData");
-            if (storedData) {
-                let tableData = JSON.parse(storedData);
-                let rows = document.querySelectorAll(".calendar table tr");
-                for (let i = 1; i < rows.length; i++) {
-                    let cells = rows[i].querySelectorAll("td");
-                    if (tableData[cells[0].innerText]) {
-                        let rowData = tableData[cells[0].innerText];
-                        for (let j = 1; j < cells.length; j++) {
-                            cells[j].innerText = rowData[j - 1];
-                        }
-                    }
-                }
-            }
-        }
-        
-        window.onload = loadData;
-    </script>
 </head>
 <body>
     <div class="nav-buttons">
@@ -137,52 +96,64 @@
                 </tr>
                 <tr>
                     <td>Monday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
                 </tr>
                 <tr>
                     <td>Tuesday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
                 </tr>
                 <tr>
                     <td>Wednesday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
                 </tr>
                 <tr>
                     <td>Thursday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
                 </tr>
                 <tr>
                     <td>Friday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
+                    <td contenteditable="true" onclick="selectCell(this)"></td>
                 </tr>
             </table>
             <button class="save-button" onclick="saveData()">Save</button>
+            <button class="color-button" onclick="toggleColor()">Toggle Green</button>
         </div>
     </div>
+    <script>
+        let selectedCell = null;
+        function selectCell(cell) {
+            selectedCell = cell;
+        }
+        function toggleColor() {
+            if (selectedCell) {
+                selectedCell.classList.toggle('selected');
+            }
+        }
+    </script>
 </body>
 </html>

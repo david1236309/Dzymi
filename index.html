@@ -68,6 +68,17 @@
         .nav-buttons button:hover, .color-button:hover {
             background-color: #357ABD;
         }
+
+        /* Style for cells that are divided into two parts */
+        .split-cell {
+            display: flex;
+            flex-direction: column;
+        }
+        .split-cell > div {
+            flex: 1;
+            border-bottom: 1px solid #000;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
@@ -150,6 +161,7 @@
         <div class="nav-buttons">
             <button class="color-button" onclick="toggleColor('dispatched')">Dispatched</button>
             <button class="color-button" onclick="toggleColor('off')">Off</button>
+            <button class="color-button" onclick="splitCell()">Split Cell</button>
         </div>
     </div>
 
@@ -168,18 +180,12 @@
                 for (let j = 0; j < table.rows[i].cells.length; j++) {
                     row.push({
                         text: table.rows[i].cells[j].innerText,
-                        color: table.rows[i].cells[j].style.backgroundColor // Save the background color of the cell
+                        color: table.rows[i].cells[j].style.backgroundColor,
+                        class: table.rows[i].cells[j].className
                     });
                 }
                 data.push(row);
             }
-
-            // Save headers
-            let headers = [];
-            document.querySelectorAll("th[contenteditable='true']").forEach((header, index) => {
-                headers.push(header.innerText);
-            });
-            localStorage.setItem("scheduleHeaders", JSON.stringify(headers));
 
             localStorage.setItem("scheduleData", JSON.stringify(data));
         }
@@ -187,20 +193,13 @@
         function loadData() {
             let table = document.getElementById("scheduleTable");
             let data = JSON.parse(localStorage.getItem("scheduleData"));
-            let headers = JSON.parse(localStorage.getItem("scheduleHeaders"));
-
-            if (headers) {
-                let headerCells = document.querySelectorAll("th[contenteditable='true']");
-                headerCells.forEach((header, index) => {
-                    header.innerText = headers[index];
-                });
-            }
 
             if (data) {
                 for (let i = 1; i < table.rows.length; i++) {
                     for (let j = 0; j < table.rows[i].cells.length; j++) {
                         table.rows[i].cells[j].innerText = data[i - 1][j].text || "";
-                        table.rows[i].cells[j].style.backgroundColor = data[i - 1][j].color || ""; // Load the saved background color
+                        table.rows[i].cells[j].style.backgroundColor = data[i - 1][j].color || "";
+                        table.rows[i].cells[j].className = data[i - 1][j].class || "editable";
                     }
                 }
             }
@@ -210,18 +209,29 @@
             if (selectedCell) {
                 if (type === 'dispatched') {
                     if (selectedCell.style.backgroundColor === "green") {
-                        selectedCell.style.backgroundColor = ""; // Clear the color if already dispatched
+                        selectedCell.style.backgroundColor = "";
                     } else {
-                        selectedCell.style.backgroundColor = "green"; // Set to dispatched color
+                        selectedCell.style.backgroundColor = "green";
                     }
                 } else if (type === 'off') {
                     if (selectedCell.style.backgroundColor === "gray") {
-                        selectedCell.style.backgroundColor = ""; // Clear the color if already off
+                        selectedCell.style.backgroundColor = "";
                     } else {
-                        selectedCell.style.backgroundColor = "gray"; // Set to off color
+                        selectedCell.style.backgroundColor = "gray";
                     }
                 }
-                saveData(); // Save after changing color
+                saveData();
+            }
+        }
+
+        function splitCell() {
+            if (selectedCell) {
+                selectedCell.classList.add("split-cell");
+                selectedCell.innerHTML = `
+                    <div contenteditable="true" class="editable"></div>
+                    <div contenteditable="true" class="editable"></div>
+                `;
+                saveData();
             }
         }
 
@@ -231,10 +241,6 @@
                 selectedCell = cell;
             });
             cell.addEventListener("input", saveData);
-        });
-
-        document.querySelectorAll("th[contenteditable=true]").forEach(header => {
-            header.addEventListener("input", saveData);
         });
 
         document.addEventListener("DOMContentLoaded", loadData);

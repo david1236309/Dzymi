@@ -27,192 +27,42 @@
         p {
             font-size: 18px;
         }
-        .calendar {
-            overflow-x: auto;
+        .footer {
             margin-top: 20px;
-        }
-        .calendar table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #FFF;
-            color: black;
-            table-layout: fixed;
-        }
-        .calendar th, .calendar td {
-            border: 1px solid #000;
             padding: 10px;
-            text-align: center;
-            word-wrap: break-word;
+            background-color: #111;
         }
-        .selected {
-            background-color: green !important;
-            color: white;
-        }
-        .off {
-            background-color: gray !important;
-            color: white;
-        }
-        .nav-buttons {
-            margin-top: 20px;
-            text-align: left;
-        }
-        .nav-buttons button, .color-button {
-            background-color: #4DA8DA;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .nav-buttons button:hover, .color-button:hover {
-            background-color: #357ABD;
-        }
-
-        .editable {
-            cursor: pointer;
+        .footer a {
+            color: #4DA8DA;
+            text-decoration: none;
+            margin: 0 10px;
         }
     </style>
 </head>
 <body>
-    <div class="nav-buttons">
-        <button onclick="showPage('home')">Home</button>
-        <button onclick="showPage('table')">Table</button>
-    </div>
-    
-    <div id="home" class="container">
+    <div class="container">
         <h1>DZYMI INC</h1>
-        <p><em>"Logistics is the lifeblood of global commerce."</em></p>
-        <p><strong>Company Name:</strong> DZYMI INC</p>
         <p><strong>MC Number:</strong> 1236309</p>
         <p><strong>Address:</strong> 238 Sycamore Cir, Feasterville Trvose, PA 19053</p>
-        <p><strong>Contact Number:</strong> 267-668-3612</p>
-        <p><strong>Email:</strong> david1236309@gmail.com</p>
+        <p><strong>Contact:</strong> 267-668-3612 | <a href="mailto:david1236309@gmail.com">david1236309@gmail.com</a></p>
+        
+        <h2>Contact Form</h2>
+        <form>
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+            <br><br>
+            <input type="checkbox" id="smsConsent" name="smsConsent">
+            <label for="smsConsent">
+                I agree to receive TEXT messages from DZYMI INC regarding logistics updates. You may reply STOP to opt out at any time. For assistance, reply HELP. Message and data rates may apply. Message frequency may vary. 
+                Please review our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms and Conditions</a>.
+            </label>
+            <br><br>
+            <button type="submit">Submit</button>
+        </form>
     </div>
     
-    <div id="table" class="container" style="display: none;">
-        <h1>Weekly Schedule</h1>
-        <div class="calendar">
-            <table id="scheduleTable">
-                <tr>
-                    <th contenteditable="true" class="editable">Day</th>
-                    <th contenteditable="true" class="editable">Driver 1</th>
-                    <th contenteditable="true" class="editable">Driver 2</th>
-                    <th contenteditable="true" class="editable">Driver 3</th>
-                    <th contenteditable="true" class="editable">Driver 4</th>
-                    <th contenteditable="true" class="editable">Driver 5</th>
-                    <th contenteditable="true" class="editable">Driver 6</th>
-                </tr>
-                <tr>
-                    <td>Monday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                </tr>
-                <tr>
-                    <td>Wednesday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                </tr>
-                <tr>
-                    <td>Thursday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                </tr>
-                <tr>
-                    <td>Friday</td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                    <td contenteditable="true" class="editable"></td>
-                </tr>
-            </table>
-        </div>
-        
-        <div class="nav-buttons">
-            <button class="color-button" onclick="toggleColor('dispatched')">Dispatched</button>
-            <button class="color-button" onclick="toggleColor('off')">Off</button>
-        </div>
+    <div class="footer">
+        <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms and Conditions</a>
     </div>
-
-    <script>
-        function showPage(pageId) {
-            document.getElementById("home").style.display = "none";
-            document.getElementById("table").style.display = "none";
-            document.getElementById(pageId).style.display = "block";
-        }
-
-        function saveData() {
-            let table = document.getElementById("scheduleTable");
-            let data = [];
-            for (let i = 1; i < table.rows.length; i++) {
-                let row = [];
-                for (let j = 1; j < table.rows[i].cells.length; j++) {
-                    row.push({
-                        text: table.rows[i].cells[j].innerText,
-                        color: table.rows[i].cells[j].style.backgroundColor
-                    });
-                }
-                data.push(row);
-            }
-            localStorage.setItem("scheduleData", JSON.stringify(data));
-        }
-
-        function loadData() {
-            let table = document.getElementById("scheduleTable");
-            let data = JSON.parse(localStorage.getItem("scheduleData"));
-            if (data) {
-                for (let i = 1; i < table.rows.length; i++) {
-                    for (let j = 1; j < table.rows[i].cells.length; j++) {
-                        table.rows[i].cells[j].innerText = data[i - 1][j - 1].text || "";
-                        table.rows[i].cells[j].style.backgroundColor = data[i - 1][j - 1].color || "";
-                    }
-                }
-            }
-        }
-
-        function toggleColor(type) {
-            if (selectedCell) {
-                if (type === 'dispatched') {
-                    selectedCell.style.backgroundColor = selectedCell.style.backgroundColor === "green" ? "" : "green";
-                } else if (type === 'off') {
-                    selectedCell.style.backgroundColor = selectedCell.style.backgroundColor === "gray" ? "" : "gray";
-                }
-                saveData();
-            }
-        }
-
-        let selectedCell = null;
-        document.querySelectorAll("td").forEach(cell => {
-            cell.addEventListener("click", () => {
-                selectedCell = cell;
-            });
-            cell.addEventListener("input", saveData);
-        });
-
-        document.addEventListener("DOMContentLoaded", loadData);
-    </script>
 </body>
 </html>

@@ -38,21 +38,6 @@
         .footer a:hover {
             text-decoration: underline;
         }
-        .form-container {
-            margin-top: 20px;
-            text-align: left;
-            background-color: #FFF;
-            color: black;
-            padding: 15px;
-            border-radius: 10px;
-        }
-        .form-container label {
-            display: block;
-            margin-bottom: 10px;
-        }
-        .form-container input[type="checkbox"] {
-            margin-right: 10px;
-        }
         .nav-buttons {
             margin-top: 20px;
         }
@@ -68,78 +53,120 @@
         .nav-buttons button:hover {
             background-color: #357ABD;
         }
-        .calendar table {
-            width: 100%;
-            border-collapse: collapse;
+        .content {
+            text-align: left;
             background-color: #FFF;
             color: black;
-        }
-        .calendar th, .calendar td {
-            border: 1px solid #000;
-            padding: 10px;
-            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
     <div class="nav-buttons">
         <button onclick="showPage('home')">Home</button>
-        <button onclick="showPage('table')">Table</button>
         <button onclick="showPage('privacy')">Privacy Policy</button>
         <button onclick="showPage('terms')">Terms and Conditions</button>
     </div>
 
     <div id="home" class="container">
         <h1>DZYMI INC</h1>
-        <p><em>"Logistics is the lifeblood of global commerce."</em></p>
-        <p><strong>Company Name:</strong> DZYMI INC</p>
-        <p><strong>MC Number:</strong> 1236309</p>
-        <p><strong>Address:</strong> 238 Sycamore Cir, Feasterville Trvose, PA 19053</p>
-        <p><strong>Contact Number:</strong> 267-668-3612</p>
-        <p><strong>Email:</strong> david1236309@gmail.com</p>
-
-        <div class="form-container">
-            <h2>Subscribe to SMS Notifications</h2>
-            <form>
-                <label>
-                    <input type="checkbox" name="sms_consent">
-                    I agree to receive text messages from DZYMI INC related to appointment reminders and billing updates at the phone number provided above. You may reply STOP to opt out at any time. Messages and data rates may apply. Message frequency may vary.
-                </label>
-            </form>
-            <p>For more details, please review our <a href="#" onclick="showPage('privacy')">Privacy Policy</a> and <a href="#" onclick="showPage('terms')">Terms and Conditions</a>.</p>
-        </div>
-    </div>
-
-    <div id="table" class="container" style="display: none;">
-        <h1>Weekly Schedule</h1>
-        <div class="calendar">
-            <table>
-                <tr>
-                    <th>Day</th>
-                    <th>Driver 1</th>
-                    <th>Driver 2</th>
-                    <th>Driver 3</th>
-                    <th>Driver 4</th>
-                    <th>Driver 5</th>
-                    <th>Driver 6</th>
-                </tr>
-                <tr><td>Monday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td>Tuesday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td>Wednesday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td>Thursday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td>Friday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            </table>
-        </div>
+        <p>Welcome to DZYMI INC. We specialize in logistics and transportation services.</p>
     </div>
 
     <div id="privacy" class="container" style="display: none;">
         <h1>Privacy Policy</h1>
-        <p>We collect personal information such as name, phone number, and email to provide SMS notifications. We do not share phone numbers for SMS marketing. For more details, visit our full Privacy Policy.</p>
+        <div class="content">
+            <p><strong>Effective Date:</strong> March 2025</p>
+            <p><strong>Introduction:</strong> At DZYMI INC, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and disclose your information.</p>
+
+            <p><strong>1. Information We Collect:</strong></p>
+            <ul>
+                <li>We collect your name, phone number, and email when you provide them for SMS notifications.</li>
+                <li>We do not collect sensitive personal data.</li>
+            </ul>
+
+            <p><strong>2. How We Use Your Information:</strong></p>
+            <ul>
+                <li>To send SMS notifications related to logistics updates, billing, and important announcements.</li>
+                <li>To respond to customer inquiries and provide support.</li>
+            </ul>
+
+            <p><strong>3. SMS Communication:</strong></p>
+            <ul>
+                <li>By opting into SMS notifications, you agree to receive text messages from DZYMI INC.</li>
+                <li>You can opt out anytime by replying STOP.</li>
+                <li>Message frequency varies; standard carrier charges may apply.</li>
+            </ul>
+
+            <p><strong>4. Information Sharing:</strong></p>
+            <ul>
+                <li>We do not share or sell your phone number for marketing purposes.</li>
+                <li>Your information may be disclosed only when required by law.</li>
+            </ul>
+
+            <p><strong>5. Data Security:</strong></p>
+            <ul>
+                <li>We implement security measures to protect your data from unauthorized access.</li>
+            </ul>
+
+            <p><strong>6. Changes to This Policy:</strong></p>
+            <ul>
+                <li>We may update this policy, and any changes will be posted here.</li>
+            </ul>
+
+            <p><strong>Contact Us:</strong></p>
+            <p>If you have any questions, please contact us at <strong>david1236309@gmail.com</strong> or call <strong>267-668-3612</strong>.</p>
+        </div>
     </div>
 
     <div id="terms" class="container" style="display: none;">
         <h1>Terms and Conditions</h1>
-        <p>By opting into SMS notifications, you agree to receive messages related to your appointments and billing. You can opt out anytime by replying STOP. Message frequency varies. Standard rates may apply.</p>
+        <div class="content">
+            <p><strong>Effective Date:</strong> March 2025</p>
+
+            <p><strong>1. Agreement to Terms:</strong></p>
+            <ul>
+                <li>By using our SMS services, you agree to these Terms and Conditions.</li>
+            </ul>
+
+            <p><strong>2. SMS Notification Service:</strong></p>
+            <ul>
+                <li>By opting into our SMS service, you agree to receive text messages related to logistics updates and billing.</li>
+                <li>You can opt out anytime by replying STOP.</li>
+            </ul>
+
+            <p><strong>3. Message Frequency & Charges:</strong></p>
+            <ul>
+                <li>Message frequency varies depending on service updates.</li>
+                <li>Standard messaging and data rates may apply.</li>
+            </ul>
+
+            <p><strong>4. Privacy Policy:</strong></p>
+            <ul>
+                <li>Your phone number will not be shared or sold to third parties for marketing purposes.</li>
+                <li>Refer to our <a href="#" onclick="showPage('privacy')">Privacy Policy</a> for more details.</li>
+            </ul>
+
+            <p><strong>5. User Responsibilities:</strong></p>
+            <ul>
+                <li>Ensure that your provided phone number is accurate and up to date.</li>
+                <li>You are responsible for any messaging charges incurred by your carrier.</li>
+            </ul>
+
+            <p><strong>6. Limitation of Liability:</strong></p>
+            <ul>
+                <li>DZYMI INC is not responsible for delays or failures in SMS delivery caused by network issues.</li>
+            </ul>
+
+            <p><strong>7. Changes to Terms:</strong></p>
+            <ul>
+                <li>We reserve the right to modify these Terms at any time.</li>
+            </ul>
+
+            <p><strong>8. Contact Information:</strong></p>
+            <p>For questions regarding these Terms, contact us at <strong>david1236309@gmail.com</strong> or call <strong>267-668-3612</strong>.</p>
+        </div>
     </div>
 
     <div class="footer">
@@ -149,7 +176,6 @@
     <script>
         function showPage(pageId) {
             document.getElementById("home").style.display = "none";
-            document.getElementById("table").style.display = "none";
             document.getElementById("privacy").style.display = "none";
             document.getElementById("terms").style.display = "none";
             document.getElementById(pageId).style.display = "block";

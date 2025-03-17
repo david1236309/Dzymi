@@ -29,40 +29,131 @@
         }
         .footer {
             margin-top: 20px;
-            padding: 10px;
-            background-color: #111;
+            font-size: 14px;
         }
         .footer a {
             color: #4DA8DA;
             text-decoration: none;
-            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .form-container {
+            margin-top: 20px;
+            text-align: left;
+            background-color: #FFF;
+            color: black;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .form-container input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .nav-buttons {
+            margin-top: 20px;
+        }
+        .nav-buttons button {
+            background-color: #4DA8DA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .nav-buttons button:hover {
+            background-color: #357ABD;
+        }
+        .calendar table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #FFF;
+            color: black;
+        }
+        .calendar th, .calendar td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="nav-buttons">
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('table')">Table</button>
+        <button onclick="showPage('privacy')">Privacy Policy</button>
+        <button onclick="showPage('terms')">Terms and Conditions</button>
+    </div>
+
+    <div id="home" class="container">
         <h1>DZYMI INC</h1>
+        <p><em>"Logistics is the lifeblood of global commerce."</em></p>
+        <p><strong>Company Name:</strong> DZYMI INC</p>
         <p><strong>MC Number:</strong> 1236309</p>
         <p><strong>Address:</strong> 238 Sycamore Cir, Feasterville Trvose, PA 19053</p>
-        <p><strong>Contact:</strong> 267-668-3612 | <a href="mailto:david1236309@gmail.com">david1236309@gmail.com</a></p>
-        
-        <h2>Contact Form</h2>
-        <form>
-            <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" name="phone" required>
-            <br><br>
-            <input type="checkbox" id="smsConsent" name="smsConsent">
-            <label for="smsConsent">
-                I agree to receive TEXT messages from DZYMI INC regarding logistics updates. You may reply STOP to opt out at any time. For assistance, reply HELP. Message and data rates may apply. Message frequency may vary. 
-                Please review our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms and Conditions</a>.
-            </label>
-            <br><br>
-            <button type="submit">Submit</button>
-        </form>
+        <p><strong>Contact Number:</strong> 267-668-3612</p>
+        <p><strong>Email:</strong> david1236309@gmail.com</p>
+
+        <div class="form-container">
+            <h2>Subscribe to SMS Notifications</h2>
+            <form>
+                <label>
+                    <input type="checkbox" name="sms_consent">
+                    I agree to receive text messages from DZYMI INC related to appointment reminders and billing updates at the phone number provided above. You may reply STOP to opt out at any time. Messages and data rates may apply. Message frequency may vary.
+                </label>
+            </form>
+            <p>For more details, please review our <a href="#" onclick="showPage('privacy')">Privacy Policy</a> and <a href="#" onclick="showPage('terms')">Terms and Conditions</a>.</p>
+        </div>
     </div>
-    
+
+    <div id="table" class="container" style="display: none;">
+        <h1>Weekly Schedule</h1>
+        <div class="calendar">
+            <table>
+                <tr>
+                    <th>Day</th>
+                    <th>Driver 1</th>
+                    <th>Driver 2</th>
+                    <th>Driver 3</th>
+                    <th>Driver 4</th>
+                    <th>Driver 5</th>
+                    <th>Driver 6</th>
+                </tr>
+                <tr><td>Monday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Tuesday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Wednesday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Thursday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Friday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="privacy" class="container" style="display: none;">
+        <h1>Privacy Policy</h1>
+        <p>We collect personal information such as name, phone number, and email to provide SMS notifications. We do not share phone numbers for SMS marketing. For more details, visit our full Privacy Policy.</p>
+    </div>
+
+    <div id="terms" class="container" style="display: none;">
+        <h1>Terms and Conditions</h1>
+        <p>By opting into SMS notifications, you agree to receive messages related to your appointments and billing. You can opt out anytime by replying STOP. Message frequency varies. Standard rates may apply.</p>
+    </div>
+
     <div class="footer">
-        <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms and Conditions</a>
+        <p>&copy; 2025 DZYMI INC. All rights reserved. | <a href="#" onclick="showPage('privacy')">Privacy Policy</a> | <a href="#" onclick="showPage('terms')">Terms and Conditions</a></p>
     </div>
+
+    <script>
+        function showPage(pageId) {
+            document.getElementById("home").style.display = "none";
+            document.getElementById("table").style.display = "none";
+            document.getElementById("privacy").style.display = "none";
+            document.getElementById("terms").style.display = "none";
+            document.getElementById(pageId).style.display = "block";
+        }
+    </script>
 </body>
 </html>

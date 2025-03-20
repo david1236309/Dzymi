@@ -27,31 +27,6 @@
         p {
             font-size: 18px;
         }
-        .calendar {
-            overflow-x: auto;
-            margin-top: 20px;
-        }
-        .calendar table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #FFF;
-            color: black;
-            table-layout: fixed;
-        }
-        .calendar th, .calendar td {
-            border: 1px solid #000;
-            padding: 10px;
-            text-align: center;
-            word-wrap: break-word;
-        }
-        .selected {
-            background-color: green !important;
-            color: white;
-        }
-        .off {
-            background-color: gray !important;
-            color: white;
-        }
         .nav-buttons {
             margin-top: 20px;
         }
@@ -83,7 +58,6 @@
 <body>
     <div class="nav-buttons">
         <button onclick="showPage('home')">Home</button>
-        <button onclick="showPage('table')">Schedule</button>
         <button onclick="showPage('privacy')">Privacy Policy</button>
         <button onclick="showPage('terms')">Terms and Conditions</button>
     </div>
@@ -95,134 +69,19 @@
         <p><strong>Address:</strong> 238 Sycamore Cir, Feasterville Trvose, PA 19053</p>
         <p><strong>Contact Number:</strong> 267-668-3612</p>
         <p><strong>Email:</strong> david1236309@gmail.com</p>
-         <p><strong></strong> DZYMI INC is a trusted carrier providing reliable and efficient freight transportation services across the United States. We specialize in full truckload (FTL) and less-than-truckload (LTL) shipments, ensuring timely and secure deliveries. Our fleet is equipped to handle a variety of cargo, including dry goods, refrigerated products, and specialized freight. With a commitment to safety and compliance, we adhere to all industry regulations and maintain high standards of service. Our experienced drivers and logistics team work diligently to optimize routes and reduce transit times. Whether you need local or long-haul transportation, we offer flexible and cost-effective solutions tailored to your needs.</p>
-    </div>
-
-    <div id="table" class="container" style="display: none;">
-        <h1>Weekly Schedule</h1>
-        <div class="calendar">
-            <table id="scheduleTable">
-                <tr>
-                    <th>Day</th>
-                    <th>Driver 1</th>
-                    <th>Driver 2</th>
-                    <th>Driver 3</th>
-                    <th>Driver 4</th>
-                    <th>Driver 5</th>
-                    <th>Driver 6</th>
-                </tr>
-                <tr>
-                    <td>Monday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>Wednesday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>Thursday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>Friday</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-            </table>
-        </div>
+        <p>DZYMI INC is a trusted carrier providing reliable and efficient freight transportation services across the United States...</p>
     </div>
 
     <div id="privacy" class="container" style="display: none;">
         <h1>Privacy Policy</h1>
-        <p>Effective Date: [03.17.2025]
-
-DZYMI INC ("we", "our", "us") respects your privacy. This Privacy Policy explains what personal information we collect, how we use it, and with whom we share it.
-
-1. Information We Collect
-We collect the following types of personal information:
-
-Contact Information: DZYMI INC ,2676683612, david 1236309@gmail.com 238 Sycamore Cir Feasterville Trvose PA 19053
-SMS Consent Data: If you opt in to receive SMS messages, we store your consent record.
-Website Usage Data: IP address, browser type, and interactions with our website.
-2. How We Use Your Information
-We use your personal information to:
-
-Provide logistics and transportation services.
-Communicate with you via phone, email, or SMS about services, billing, and updates.
-Improve our website and customer experience.
-3. Sharing of Information
-We do not share, sell, or rent phone numbers collected for SMS communications with third parties for marketing purposes. However, we may share your information:
-
-With service providers who assist us in business operations.
-If required by law or government authorities.
-4. SMS Communications
-By opting into SMS messaging, you agree to receive text messages related to:
-
-Appointment reminders
-Billing and account updates
-Service notifications
-You can opt out at any time by replying STOP to any message. Message and data rates may apply.
-
-For more details, visit our Terms and Conditions page.</p>
+        <p>Effective Date: [03.17.2025]</p>
+        <p>DZYMI INC ("we", "our", "us") respects your privacy. This Privacy Policy explains what personal information we collect, how we use it, and with whom we share it...</p>
     </div>
 
     <div id="terms" class="container" style="display: none;">
         <h1>Terms and Conditions</h1>
-        <p>Effective Date:03.17.2025
-
-These Terms and Conditions ("Terms") govern the use of SMS communications provided by DZYMI INC. By opting into our SMS services, you agree to the following:
-
-1. SMS Consent & Use
-By providing your phone number and opting in, you consent to receive SMS messages from DZYMI INC related to:
-Appointment reminders
-Billing notifications
-Service-related updates
-We do not send marketing or promotional SMS messages.
-Your SMS consent will not be shared with third parties for marketing purposes.
-2. Message Frequency
-The number of messages you receive depends on the nature of your engagement with our services. Typically, you may receive up to 2 messages per week.
-
-3. Fees & Charges
-Standard message and data rates may apply depending on your carrier plan. Charges vary based on domestic or international SMS rates.
-
-4. Opting Out
-You can unsubscribe from SMS messages at any time by replying STOP to any message. You will receive a final confirmation message and will no longer receive further SMS messages.
-
-5. Help & Support
-For assistance, reply HELP to any SMS or contact us at:
-📞 267-668-3612
-📧 david1236309@gmail.com
-
-6. Privacy & Data Protection
-Your SMS consent data is stored securely. For details on how we handle personal data, please review our Privacy Policy.</p>
+        <p>Effective Date: 03.17.2025</p>
+        <p>These Terms and Conditions ("Terms") govern the use of SMS communications provided by DZYMI INC...</p>
     </div>
 
     <div class="footer">
@@ -232,7 +91,6 @@ Your SMS consent data is stored securely. For details on how we handle personal 
     <script>
         function showPage(pageId) {
             document.getElementById("home").style.display = "none";
-            document.getElementById("table").style.display = "none";
             document.getElementById("privacy").style.display = "none";
             document.getElementById("terms").style.display = "none";
             document.getElementById(pageId).style.display = "block";
